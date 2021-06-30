@@ -3,7 +3,7 @@ import './sass/main.scss';
 const refs = {
     body: document.querySelector('body'),
     startBtn: document.querySelector('[data-action="start"]'),
-    closeBtn: document.querySelector('[data-action="stop"]'),
+    stopBtn: document.querySelector('[data-action="stop"]'),
 };
 
 const colors = [
@@ -22,12 +22,20 @@ const randomIntegerFromInterval = (min, max) => {
 };
 
 refs.startBtn.addEventListener('click', startChangeColor);
+refs.stopBtn.addEventListener('click', stopChangeColor);
 
 function startChangeColor() {
         timerId = setInterval(() => {
         refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length-1)];
     }, 1000);
-    }
+}
+    
+function stopChangeColor() {
+  clearInterval(timerId);
+  refs.body.style.backgroundColor = "";
+}
+
+//method #2
 
 // refs.startBtn.addEventListener('click', () => {
 //     timerId = setInterval(() => {
@@ -35,8 +43,8 @@ function startChangeColor() {
 //     }, 1000);
 // });
 
-refs.closeBtn.addEventListener('click', () => {
-    clearInterval(timerId);
-    refs.body.style.backgroundColor = "";
-});
+// refs.stopBtn.addEventListener('click', () => {
+//     clearInterval(timerId);
+//     refs.body.style.backgroundColor = "";
+// });
 
