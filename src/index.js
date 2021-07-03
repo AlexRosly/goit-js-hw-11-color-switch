@@ -27,12 +27,14 @@ refs.stopBtn.addEventListener('click', stopChangeColor);
 function startChangeColor() {
         timerId = setInterval(() => {
         refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length-1)];
-    }, 1000);
+        }, 1000);
+   refs.startBtn.setAttribute('disabled', true);
 }
     
 function stopChangeColor() {
   clearInterval(timerId);
   refs.body.style.backgroundColor = "";
+  refs.startBtn.removeAttribute('disabled');
 }
 
 //method #2
